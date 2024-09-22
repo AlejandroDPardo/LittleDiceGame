@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Dice Game</title> 
+    <link rel="stylesheet" href="main.css">
+    <script defer src="script.js"></script> 
+</head>
+<body>
+    <h1>Dice Game</h1> 
+
+    <!-- Button to trigger the game function when clicked --> 
+    <button onclick="playGame()">Roll Dice</button> 
+
+    <p id="result"></p> 
+    <!-- Medium-sized image related to the game -->
+    <img id="memeImage" src="breach.jpg">
+    <!-- Audio element for background music -->
+    <audio id="gameMusic" src="robot music.mp3" loop preload="auto"></audio>
+    <script>
+        // Function to play background music
+        function playMusic() {
+            const music = document.getElementById('gameMusic'); // Get the audio element
+            music.play(); // Play the music
+        }
+
+        function playGame() { // Function to simulate rolling two dice
+            playMusic(); // Play music when the game is played
+
+            // Generate a random number between 1 and 6 for the first die
+            let die1 = Math.floor(Math.random() * 6) + 1; 
+            // Generate a random number between 1 and 6 for the second die
+            let die2 = Math.floor(Math.random() * 6) + 1; 
+            // Calculate the sum of the two dice
+            let sum = die1 + die2; 
+            // Variable to hold the result message
+            let resultText = "You rolled: " + die1 + " and " + die2 + ". Sum: " + sum + ". ";
+
+            // Check game rules for win/lose conditions
+            if (sum === 7 || sum === 11) { // Lose condition
+                resultText += "You lose!"; // Lose message to resultText
+            } else if (die1 === die2 && die1 % 2 === 0) { // Win condition for doubles that are even
+                resultText += "You won!"; // Win message to resultText
+            } else { // If neither condition is met, it's a push
+                resultText += "You pushed!"; // Push message to resultText
+            }
+
+            // Display the result in the paragraph with ID 'result'
+            document.getElementById("result").innerHTML = resultText; 
+        }
+    </script>
+</body>
+</html>
