@@ -1,3 +1,4 @@
+// <!-- My name is Alejandro Altuve, 9/21/24 -->
 // Function to play background music
 // This function accesses the <audio> element with ID 'gameMusic' and plays the music.
 function playMusic() {
